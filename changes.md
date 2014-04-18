@@ -1,5 +1,15 @@
 Current:
 
+- Updated Clang to 3.4 (Gilles Cornu)
+
+- Updated ark cookbook to v0.7.2 with additional patch [COOK-2771] for support of XZ compression (Gilles Cornu)
+
+- Updated ElasticSearch to 1.1.0 (Gilles Cornu)
+
+- Updated Maven to 3.2.1 (Gilles Cornu)
+
+- Integrated new cookbook: android-sdk v0.2.0 (Gilles Cornu)
+
 - Updated sbt-extras to 60b6f267d47e8dd915a3baaef3b0b63fef37e5dd (Gilles Cornu)
 
 - Added JCE Unlimited Strength Jurisdiction Policy Files to Oracle JDK 8 (Gilles Cornu)
@@ -8,6 +18,13 @@ Current:
 
 - Updated Rebar download location (Chase James, Michael Klishin)
 
+- Updated PHP to 5.4.27 and 5.5.11 (Graham Campbell and Loïc Frering)
+
+- Support for PHP 5.6 with 5.6.0alpha3 (Loïc Frering)
+
+- Updated HHVM to 3.0.1 (Graham Campbell and Loïc Frering)
+
+- Support for HHVM nightly (Loïc Frering)
 
 Production .org 03.01.2014
 
