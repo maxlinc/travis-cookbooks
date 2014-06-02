@@ -22,6 +22,9 @@
 # THE SOFTWARE.
 
 
-log "The Windows worker is still experimental... most things don't work"
-include_recipe "chocolatey"
-include_recipe "travis_build_environment::common"
+# Shared across all worker types and platforms
+
+# Version control systems
+include_recipe "git"
+include_recipe "mercurial"
+include_recipe "subversion"
