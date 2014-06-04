@@ -12,6 +12,7 @@ group :test do
   gem 'kitchen-vagrant'
   gem 'strainer', :github => 'customink/strainer'
   gem 'serverspec'
+  gem 'rspec-its'
   gem 'winrm'
   # gem 'windows_chef_zero'
   gem 'kitchen-driver-vagrant_provision'

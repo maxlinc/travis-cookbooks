@@ -1,3 +1,4 @@
+require 'rspec/its'
 require 'serverspec'
 require 'winrm'
 
