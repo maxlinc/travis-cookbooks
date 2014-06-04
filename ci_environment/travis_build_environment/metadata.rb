@@ -18,3 +18,6 @@ depends "chocolatey"
 depends "git"
 depends "mercurial"
 depends "subversion"
+
+# Tools & libraries
+depends "phantomjs"

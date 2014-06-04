@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: travis_build_environment
-# Recipe:: root
+# Recipe:: common
 # Copyright 2011-2014, Travis CI Development Team <contact@travis-ci.org>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
