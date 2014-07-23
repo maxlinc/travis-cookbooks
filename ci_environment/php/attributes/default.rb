@@ -1,11 +1,16 @@
-default[:php][:multi][:versions] = ["5.2.17", "5.3.3", "5.3.27", "5.4.28", "5.5.12", "5.6.0beta2"]
-default[:php][:multi][:aliases]  = {"5.2" => "5.2.17", "5.3" => "5.3.27", "5.4" => "5.4.28", "5.5" => "5.5.12", "5.6" => "5.6.0beta2"}
+default[:php][:multi][:versions] = ["5.2.17", "5.3.3", "5.3.27", "5.4.30", "5.5.14", "5.6.0RC2"]
+default[:php][:multi][:aliases]  = {"5.2" => "5.2.17", "5.3" => "5.3.27", "5.4" => "5.4.30", "5.5" => "5.5.14", "5.6" => "5.6.0RC2"}
 
 default[:php][:multi][:extensions] = {
   'apc'       => {
     'versions' => default[:php][:multi][:versions].reject { |version| version.start_with?("5.5", "5.6") }
   },
-  'memcache'  => {},
+  'memcache' => {
+    'versions' => default[:php][:multi][:versions].select { |version| version.start_with?("5.2") }
+  },
+  'memcache-beta'  => {
+    'versions' => default[:php][:multi][:versions].reject { |version| version.start_with?("5.2") }
+  },
   'memcached' => {
     'before_packages' => %w(libevent-dev libcloog-ppl0),
     'before_script'   => <<-EOF,
@@ -32,10 +37,10 @@ default[:php][:multi][:extensions] = {
       autoreconf -i && ./configure && make && make install
     EOF
   },
-  'pear.zero.mq/zmq-beta' => {
+  'zmq-beta' => {
+    'versions' => default[:php][:multi][:versions].reject { |version| version.start_with?("5.2") },
     'before_recipes'  => %w(zeromq::ppa),
-    'before_packages' => %w(libzmq3-dev),
-    'channel'         => 'pear.zero.mq'
+    'before_packages' => %w(libzmq3-dev)
   },
   'redis' => {}
 }

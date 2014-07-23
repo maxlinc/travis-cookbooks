@@ -4,7 +4,7 @@ gem 'rake'
 gem 'berkshelf'
 
 group :test do
-  gem 'foodcritic', '~> 2.2.0'
+  gem 'foodcritic', '~> 4.0.0'
   gem 'chefspec', '~> 2.0.1'
   gem 'rubocop', '~> 0.18'
   gem 'rainbow', '< 2.0'
