@@ -2,33 +2,22 @@
 driver:
   name: vagrant
 driver_config:
-  require_chef_omnibus: true
   customize:
     cpus: 2
     memory: 1024
-
-# Disabled at top level... see workaround on win8
-provisioner:
-  name: chef_solo
-
+  require_chef_omnibus: true
+  roles_path: ci_environment
 platforms:
-  - name: precise
+  -
+    name: precise
     driver:
       box: ubuntu/precise64
-  - name: trusty
+  -
+    name: trusty
     driver:
       box: ubuntu/trusty64
-  - name: win2012_r2_core
-    # Temporary (hopefully) workaround:
-    # https://github.com/test-kitchen/kitchen-vagrant/issues/77#issuecomment-39931279
-    driver:
-      name: vagrant_provision
-      box: win2012_r2_core
-      guest: :windows
-      vagrantfile_erb: 'Vagrantfile.windows.erb'
-      customize:
-        memory: 2048 # yeah... you probably want more memory on windows
-  - name: win8
+  -
+    name: windows
     # Temporary (hopefully) workaround:
     # https://github.com/test-kitchen/kitchen-vagrant/issues/77#issuecomment-39931279
     driver:
@@ -38,9 +27,69 @@ platforms:
       vagrantfile_erb: 'Vagrantfile.windows.erb'
       customize:
         memory: 2048 # yeah... you probably want more memory on windows
-
+provisioner:
+  name: chef_solo
 suites:
-  # based on https://github.com/travis-ci/travis-images/tree/master/templates, should find a way to link the projects
-  - name: worker_windows
+  -
+    name: worker_android
     run_list:
-      - role[worker_windows]
+      - "role[worker_android]"
+  -
+    name: worker_erlang
+    run_list:
+      - "role[worker_erlang]"
+  -
+    name: worker_go
+    run_list:
+      - "role[worker_go]"
+  -
+    name: worker_haskell
+    run_list:
+      - "role[worker_haskell]"
+  -
+    name: worker_jvm
+    run_list:
+      - "role[worker_jvm]"
+  -
+    name: worker_node-js
+    run_list:
+      - "role[worker_node-js]"
+  -
+    name: worker_nodejs
+    run_list:
+      - "role[worker_nodejs]"
+  -
+    name: worker_osx
+    run_list:
+      - "role[worker_osx]"
+  -
+    name: worker_perl
+    run_list:
+      - "role[worker_perl]"
+  -
+    name: worker_php
+    run_list:
+      - "role[worker_php]"
+  -
+    name: worker_python
+    run_list:
+      - "role[worker_python]"
+  -
+    name: worker_ruby
+    run_list:
+      - "role[worker_ruby]"
+  -
+    name: worker_standard
+    run_list:
+      - "role[worker_standard]"
+  -
+    name: worker_staging
+    run_list:
+      - "role[worker_staging]"
+  -
+    name: worker_windows
+    run_list:
+      - "role[worker_windows]"
+    excludes:
+      - precise
+      - trusty
